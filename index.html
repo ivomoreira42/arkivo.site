@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Arkivo — cartografia e automação para arqueologia de campo."
+    />
+    <meta name="theme-color" content="#fafafa" />
+    <title>Arkivo</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist@5.2.5/index.min.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main id="surface" class="surface" aria-label="Arkivo">
+      <div id="grate" class="grate" aria-hidden="true"></div>
+
+      <header class="brand">
+        <svg
+          class="logo"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 128 128"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <rect x="6.2" y="64" width="46.5" height="46.5" />
+          <polygon points="58.9,110.5 105.4,110.5 121.8,17.5 75.3,17.5" />
+        </svg>
+        <h1>Arkivo</h1>
+      </header>
+
+      <section
+        class="station"
+        aria-label="Estação de orientação. O ponteiro segue o cursor e informa azimute, distância e coordenadas locais."
+      >
+        <div class="station-label">Estação</div>
+        <div class="station-body">
+          <div id="compass" class="compass" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+              <circle
+                cx="50"
+                cy="50"
+                r="46"
+                fill="none"
+                stroke="currentColor"
+                stroke-opacity="0.25"
+                stroke-width="1.25"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="34"
+                fill="none"
+                stroke="currentColor"
+                stroke-opacity="0.18"
+                stroke-width="1"
+              />
+              <g id="ticks"></g>
+              <text
+                x="50"
+                y="14"
+                text-anchor="middle"
+                fill="currentColor"
+                font-size="8"
+                font-weight="600"
+              >
+                N
+              </text>
+              <polygon
+                id="needle"
+                points="50,18 54,58 50,54 46,58"
+                class="needle"
+              />
+              <circle cx="50" cy="50" r="2.4" class="needle" />
+            </svg>
+          </div>
+
+          <dl class="readout">
+            <dt>AZIM</dt>
+            <dd id="azim">0,0°</dd>
+            <dt>DIST</dt>
+            <dd id="dist">0,0 m</dd>
+            <dt>E</dt>
+            <dd id="east">351.000,0</dd>
+            <dt>N</dt>
+            <dd id="north">7.412.000,0</dd>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/station.js"></script>
+  </body>
+</html>

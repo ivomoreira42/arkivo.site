@@ -1,0 +1,186 @@
+:root {
+  --bg: #fafafa;
+  --fg: #171717;
+  --muted: #737373;
+  --border: #e5e5e5;
+  --card: #ffffff;
+  --primary: #171717;
+  --radius: 0.625rem;
+  --font: "Geist Variable", "Geist", ui-sans-serif, sans-serif;
+  --mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.surface {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  overflow: hidden;
+  background:
+    radial-gradient(1200px 700px at 15% 10%, #ffffff 0%, transparent 55%),
+    radial-gradient(900px 600px at 85% 90%, #f0f0f0 0%, transparent 50%),
+    var(--bg);
+}
+
+.grate {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.brand,
+.station {
+  position: relative;
+  z-index: 1;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  max-width: 28rem;
+  margin-bottom: clamp(2.5rem, 8vh, 4.5rem);
+}
+
+.logo {
+  width: 3.25rem;
+  height: 3.25rem;
+  color: var(--fg);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(2.75rem, 8vw, 4.25rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.tagline {
+  margin: 0.25rem 0 0;
+  max-width: 22rem;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.status {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--muted) 85%, var(--fg));
+}
+
+.station {
+  width: min(100%, 22rem);
+  padding: 1rem 1.35rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--fg) 4%, transparent);
+}
+
+.station-label {
+  margin-bottom: 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.station-body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.compass {
+  width: 5.25rem;
+  height: 5.25rem;
+  flex-shrink: 0;
+  color: var(--fg);
+}
+
+.compass svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.needle {
+  fill: var(--primary);
+}
+
+.readout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.85rem;
+  row-gap: 0.28rem;
+  margin: 0;
+  min-width: 0;
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.readout dt {
+  margin: 0;
+  color: var(--muted);
+}
+
+.readout dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 550;
+}
+
+@media (max-width: 420px) {
+  .station-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .compass {
+    margin-inline: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grate {
+    transition: none;
+  }
+}
